@@ -1,6 +1,8 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "Park Meadows Townhouse"
+
+[module]
 
 [[module.imports]]
 path = "github.com/willfaught/paige"
