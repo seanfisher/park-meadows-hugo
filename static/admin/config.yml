@@ -1,0 +1,64 @@
+backend:
+  name: github
+  repo: seanfisher/park-meadows-hugo
+  branch: gh-pages
+
+media_folder: "static/images/uploads"
+
+publish_mode: editorial_workflow
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+  - name: "Pages"
+    label: "Pages"
+    files:
+      - label: "Move In"
+        name: "movein"
+        file: "content/movein.md"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Position, name: position, widget: string}
+              - {label: Photo, name: photo, widget: image}
+  - label: "Blog"
+    name: "blog"
+    folder: "content/blog"
+    create: true
+    path: "{{slug}}/index" # Each document is inside a folder with the slug name.
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "site_settings"
+    label: "Site Settings"
+    files:
+      - file: "data/footer.json"
+        label: Footer
+        name: footer
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Blurb, name: blurb, widget: text}
+      - file: "hugo.toml"
+        label: Hugo Config
+        name: config
+        editor:
+          preview: false
+        fields:
+          - {label: Site Title for Browser Tab, name: title, widget: string}
+          - label: Params
+            name: params
+            widget: object
+            fields:
+              - label: Open Graph Image
+                name: images
+                widget: list
+                field: { label: Image, name: image, widget: image }
